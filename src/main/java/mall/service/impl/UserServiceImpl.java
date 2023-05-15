@@ -1,7 +1,8 @@
-package mall.service;
+package mall.service.impl;
 
 import mall.dao.UserDao;
 import mall.model.User;
+import mall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

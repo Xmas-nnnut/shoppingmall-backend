@@ -1,9 +1,10 @@
-package mall.service;
+package mall.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import mall.dao.GoodsDao;
 import mall.model.Goods;
+import mall.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
