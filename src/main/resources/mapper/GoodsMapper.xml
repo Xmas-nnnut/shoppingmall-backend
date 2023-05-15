@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mall.dao.GoodsDao">
+    <select id="getAllgoods" resultType="mall.model.Goods">
+        select * from goods
+    </select>
+
+    <select id="getGoodById" resultType="mall.model.Goods">
+        select * from goods where gid=#{gid}
+    </select>
+
+    <select id="searchGoodsByName" resultType="mall.model.Goods">
+        SELECT * FROM goods WHERE gname LIKE "%${gname}%"
+    </select>
+</mapper>

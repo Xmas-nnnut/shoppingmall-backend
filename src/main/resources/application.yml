@@ -11,5 +11,16 @@ spring:
 mybatis:
   mapper-locations: classpath:/mapper/*
 jwt:
-  SING: "ptu2020129008" #密钥
+  SING: "ptu202012900" #密钥
   expireTime: 30 #token有效时间 (分钟)
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
+
+file:
+  save-path: "/Users/xuqingjian/IdeaProjects/xzx-springboot-final/src/main/resources/static/img/"
+image:
+  prefix-url: "http://127.0.0.1:8080"
