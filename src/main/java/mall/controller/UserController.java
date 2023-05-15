@@ -1,6 +1,5 @@
 package mall.controller;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import mall.model.User;
 import mall.service.UserService;
 import mall.utils.JWTUtils;
@@ -8,6 +7,7 @@ import mall.utils.Result;
 import mall.utils.ResultCodeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
