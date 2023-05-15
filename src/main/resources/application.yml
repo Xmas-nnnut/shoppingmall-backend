@@ -10,3 +10,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis:
   mapper-locations: classpath:/mapper/*
+jwt:
+  SING: "ptu2020129008" #密钥
+  expireTime: 30 #token有效时间 (分钟)
