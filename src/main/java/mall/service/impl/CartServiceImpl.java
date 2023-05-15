@@ -4,8 +4,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import mall.dao.CartDao;
 import mall.dao.GoodsDao;
+import mall.dao.OrderDao;
 import mall.model.Cart;
 import mall.model.Goods;
+import mall.model.Userorder;
 import mall.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +20,8 @@ public class CartServiceImpl implements CartService {
     CartDao cartDao;
     @Autowired(required = false)
     GoodsDao goodsDao;
-//    @Autowired(required = false)
-//    OrderDao orderDao;
+    @Autowired(required = false)
+    OrderDao orderDao;
     @Override
     public Cart insertCart(Cart cart) {
         Cart cartJdbc = cartDao.getCartByUGid(cart.getUid(),cart.getGoodid());
@@ -85,12 +87,13 @@ public class CartServiceImpl implements CartService {
             return 0;
         }
         //插入订单列表
-//        for(Cart cart : cartList)
-//        {
-//            Userorder userorder = new Userorder(cart.getNumber(),cart.getPrice(),cart.getGoodsname(),cart.getUid());
-//            orderDao.InsertOrder(userorder);
-//        }
+        for(Cart cart : cartList)
+        {
+            Userorder userorder = new Userorder(cart.getNumber(),cart.getPrice(),cart.getGoodsname(),cart.getUid());
+            orderDao.InsertOrder(userorder);
+        }
         //删除购物车
         return cartDao.deleteAll(uid);
     }
 }
+
