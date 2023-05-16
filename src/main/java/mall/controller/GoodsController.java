@@ -32,6 +32,10 @@ public class GoodsController {
         return Result.success(pageInfo);
     }
 
+
+
+
+
     @ApiOperation("根据商品id获取商品详情")
     @ApiImplicitParam(name = "gid",value = "商品id",dataTypeClass = String.class,required = true,defaultValue = "1")
     @GetMapping("/detail/{gid}")
@@ -47,12 +51,12 @@ public class GoodsController {
             @ApiImplicitParam(name = "pageNum",value = "当前页码",dataTypeClass = Integer.class,required = true,defaultValue = "1"),
             @ApiImplicitParam(name = "pageSize",value = "当前页数量",dataTypeClass = Integer.class,required = true,defaultValue = "4"),
     })
-    @GetMapping("/type/{types}")
-    public Result getGoodByTypes(@RequestParam(name = "types") Integer types,
-                                 @RequestParam(name = "pageNum") Integer pageNum,
-                                 @RequestParam(name = "pageSize") Integer pageSize)
+    @GetMapping("/types")
+    public Result getGoodsByTypes(@RequestParam(name = "types") Integer types,
+                                  @RequestParam(name = "pageNum") Integer pageNum,
+                                  @RequestParam(name = "pageSize") Integer pageSize)
     {
-        PageInfo<Goods> pageInfo = goodsService.getGoodByTypes(types,pageNum,pageSize);
+        PageInfo<Goods> pageInfo = goodsService.getGoodsByTypes(types,pageNum,pageSize);
         return Result.success(pageInfo);
     }
     

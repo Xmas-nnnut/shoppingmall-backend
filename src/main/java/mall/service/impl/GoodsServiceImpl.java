@@ -46,7 +46,7 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public PageInfo<Goods> getGoodByTypes(Integer types, Integer pageNum, Integer pageSize) {
+    public PageInfo<Goods> getGoodsByTypes(Integer types, Integer pageNum, Integer pageSize) {
         //开启分页
         PageHelper.startPage(pageNum,pageSize);
         List<Goods> goodsList = goodsDao.getGoodByTypes(types);
