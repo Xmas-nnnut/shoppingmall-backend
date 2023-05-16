@@ -10,5 +10,7 @@ public interface GoodsService {
     PageInfo<Goods> getAllgoods(Integer pageNum, Integer pageSize);
     Goods getGoodById(Integer gid);
 
-    PageInfo<Goods> searchGoodsByName(String gname,Integer pageNum,Integer pageSize);
+    PageInfo<Goods> getGoodByTypes(Integer types, Integer pageNum, Integer pageSize);
+
+    PageInfo<Goods> searchGoodsByName(String gname, Integer pageNum, Integer pageSize);
 }

@@ -11,6 +11,10 @@
         select * from goods where gid=#{gid}
     </select>
 
+    <select id="getGoodByTypes" resultType="mall.model.Goods">
+        select * from goods where types=#{types}
+    </select>
+
     <select id="searchGoodsByName" resultType="mall.model.Goods">
         SELECT * FROM goods WHERE gname LIKE "%${gname}%"
     </select>

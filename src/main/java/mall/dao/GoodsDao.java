@@ -10,5 +10,7 @@ public interface GoodsDao {
     List<Goods> getAllgoods();
     Goods getGoodById(Integer gid);
 
+    List<Goods> getGoodByTypes(Integer types);
+
     List<Goods> searchGoodsByName(String gname);
 }

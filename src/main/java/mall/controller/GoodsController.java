@@ -24,7 +24,8 @@ public class GoodsController {
             @ApiImplicitParam(name = "pageNum",value = "当前页码",dataTypeClass = Integer.class,required = true,defaultValue = "1"),
             @ApiImplicitParam(name = "pageSize",value = "当前页数量",dataTypeClass = Integer.class,required = true,defaultValue = "4"),
     })
-    @GetMapping("/all")    public Result getAllgoods(@RequestParam(name = "pageNum") Integer pageNum,
+    @GetMapping("/all")
+    public Result getAllgoods(@RequestParam(name = "pageNum") Integer pageNum,
                               @RequestParam(name = "pageSize") Integer pageSize)
     {
         PageInfo<Goods> pageInfo = goodsService.getAllgoods(pageNum,pageSize);
@@ -38,6 +39,21 @@ public class GoodsController {
     {
         Goods goods = goodsService.getGoodById(gid);
         return Result.success(goods);
+    }
+
+    @ApiOperation("根据商品分类(types)，分页获取商品首页列表")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "types",value = "商品分类",dataTypeClass = Integer.class,required = true,defaultValue = "1"),
+            @ApiImplicitParam(name = "pageNum",value = "当前页码",dataTypeClass = Integer.class,required = true,defaultValue = "1"),
+            @ApiImplicitParam(name = "pageSize",value = "当前页数量",dataTypeClass = Integer.class,required = true,defaultValue = "4"),
+    })
+    @GetMapping("/type/{types}")
+    public Result getGoodByTypes(@RequestParam(name = "types") Integer types,
+                                 @RequestParam(name = "pageNum") Integer pageNum,
+                                 @RequestParam(name = "pageSize") Integer pageSize)
+    {
+        PageInfo<Goods> pageInfo = goodsService.getGoodByTypes(types,pageNum,pageSize);
+        return Result.success(pageInfo);
     }
     
     @ApiOperation("商品首页搜索-根据名称模糊查找商品")

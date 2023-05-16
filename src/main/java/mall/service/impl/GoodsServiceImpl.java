@@ -46,6 +46,20 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public PageInfo<Goods> getGoodByTypes(Integer types, Integer pageNum, Integer pageSize) {
+        //开启分页
+        PageHelper.startPage(pageNum,pageSize);
+        List<Goods> goodsList = goodsDao.getGoodByTypes(types);
+        for(Goods goods : goodsList)
+        {
+            String picpath = goods.getGpicture();
+            goods.setGpicture(imgUrl + picpath);
+        }
+        PageInfo<Goods> pageInfo = new PageInfo<>(goodsList);
+        return  pageInfo;
+    }
+
+    @Override
     public PageInfo<Goods> searchGoodsByName(String gname, Integer pageNum, Integer pageSize) {
         //开启分页
         PageHelper.startPage(pageNum,pageSize);

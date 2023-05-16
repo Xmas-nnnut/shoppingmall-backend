@@ -21,7 +21,7 @@ pagehelper:
   params: count=countsql
 
 file:
-  save-path: "/Users/xuqingjian/IdeaProjects/xzx-springboot-final/src/main/resources/static/img/"
+  save-path: "./src/main/resources/static/img/"
 image:
   prefix-url: "http://127.0.0.1:8080"
 
