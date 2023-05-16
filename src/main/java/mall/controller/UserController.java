@@ -1,5 +1,7 @@
 package mall.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import mall.model.User;
 import mall.service.UserService;
 import mall.utils.JWTUtils;
@@ -14,11 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+@Api(tags = "1-用户接口")
 @RestController
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     UserService userService;
+    @ApiOperation("用户注册")
     @PostMapping(value = "/register")
     public Result<User> register(@RequestBody User user)
     {
@@ -31,6 +35,8 @@ public class UserController {
             return Result.failure(ResultCodeEnum.USER_IS_EXITES);
         }
     }
+
+    @ApiOperation("用户登录")
     @PostMapping("/login")
     public Result login(@RequestBody User user){
         User userformjdbc = userService.loginService(user.getUname(),user.getUpassword());
