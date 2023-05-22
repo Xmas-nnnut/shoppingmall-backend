@@ -19,11 +19,17 @@ public class Userorder {
     private String time;
     @ApiModelProperty(value = "用户id",example = "1")
     private Integer uid;
+    @ApiModelProperty(value = "商品id",example = "1")
+    private Integer gid;
 
-    public Userorder(int number, int price, String goodsname, Integer uid) {
+    public Userorder(int number, int price, String goodsname, Integer uid, Integer gid) {
         this.number = number;
         this.price = price;
         this.goodsname = goodsname;
         this.uid = uid;
+        this.gid = gid;
+    }
+
+    public Userorder() {
     }
 }

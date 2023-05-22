@@ -89,7 +89,8 @@ public class CartServiceImpl implements CartService {
         //插入订单列表
         for(Cart cart : cartList)
         {
-            Userorder userorder = new Userorder(cart.getNumber(),cart.getPrice(),cart.getGoodsname(),cart.getUid());
+            Userorder userorder = new Userorder(cart.getNumber(),cart.getPrice(),
+                    cart.getGoodsname(),cart.getUid(),cart.getGoodid());
             // 向订单表插入订单信息
             orderDao.InsertOrder(userorder);
 
