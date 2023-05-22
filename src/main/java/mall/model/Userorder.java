@@ -26,7 +26,4 @@ public class Userorder {
         this.goodsname = goodsname;
         this.uid = uid;
     }
-
-    public Userorder() {
-    }
 }

@@ -21,4 +21,7 @@
     <delete id="deleteAll" parameterType="int">
         DELETE FROM cart WHERE uid = #{uid}
     </delete>
+    <update id="updateSales" parameterType="int">
+        UPDATE goods SET sales = sales + #{number} WHERE gid = #{gid}
+    </update>
 </mapper>

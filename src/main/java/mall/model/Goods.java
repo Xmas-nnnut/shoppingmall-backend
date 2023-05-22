@@ -20,4 +20,6 @@ public class Goods {
     private  Integer types;
     @ApiModelProperty(value = "商品图片",example = "http://127.0.0.1:8080/img/1.jpg")
     private String gpicture;
+    @ApiModelProperty(value = "商品详情",example = "0")
+    private Integer sales;
 }

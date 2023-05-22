@@ -17,4 +17,7 @@ public interface CartDao {
 
     int deleteOne(Integer id);
     int deleteAll(Integer uid);
+
+
+    int updateSales(Integer gid,Integer number);
 }
