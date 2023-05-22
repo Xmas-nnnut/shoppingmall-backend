@@ -11,4 +11,5 @@ public interface CommentDao {
 
     List<Comment> getAllComment();
 
-}
+    List<Comment> getCommentById(Integer gid);
+};

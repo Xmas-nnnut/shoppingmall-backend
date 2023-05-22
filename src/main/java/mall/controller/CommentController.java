@@ -34,4 +34,19 @@ public class CommentController {
         PageInfo<Comment> pageInfo = commentService.getAllComment(pageNum,pageSize);
         return Result.success(pageInfo);
     }
+
+    @ApiOperation("根据商品id(gid)，分页获取商品评论列表")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "gid",value = "商品id",dataTypeClass = Integer.class,required = true,defaultValue = "1"),
+            @ApiImplicitParam(name = "pageNum",value = "当前页码",dataTypeClass = Integer.class,required = true,defaultValue = "1"),
+            @ApiImplicitParam(name = "pageSize",value = "当前页数量",dataTypeClass = Integer.class,required = true,defaultValue = "4"),
+    })
+    @GetMapping("/gid")
+    public Result getCommentById(@RequestParam(name = "gid") Integer gid,
+                                  @RequestParam(name = "pageNum") Integer pageNum,
+                                  @RequestParam(name = "pageSize") Integer pageSize)
+    {
+        PageInfo<Comment> pageInfo = commentService.getCommentById(gid,pageNum,pageSize);
+        return Result.success(pageInfo);
+    }
 }

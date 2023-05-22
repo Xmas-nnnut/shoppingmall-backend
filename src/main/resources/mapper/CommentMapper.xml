@@ -6,4 +6,8 @@
     <select id="getAllComment" resultType="mall.model.Comment">
         SELECT * FROM comment
     </select>
+
+    <select id="getCommentById" resultType="mall.model.Comment">
+        select * from comment where gid=#{gid}
+    </select>
 </mapper>
