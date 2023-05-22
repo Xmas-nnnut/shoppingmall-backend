@@ -7,15 +7,13 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import mall.model.Comment;
+import mall.model.Goods;
 import mall.service.CommentService;
 import mall.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@Api(tags = "4-评论接口")
+@Api(tags = "5-评论接口")
 @RestController
 @RequestMapping("/comment")
 public class CommentController {
@@ -41,12 +39,13 @@ public class CommentController {
             @ApiImplicitParam(name = "pageNum",value = "当前页码",dataTypeClass = Integer.class,required = true,defaultValue = "1"),
             @ApiImplicitParam(name = "pageSize",value = "当前页数量",dataTypeClass = Integer.class,required = true,defaultValue = "4"),
     })
-    @GetMapping("/gid")
-    public Result getCommentById(@RequestParam(name = "gid") Integer gid,
+    @GetMapping("/{gid}")
+    public Result getCommentById(@PathVariable(name = "gid") Integer gid,
                                   @RequestParam(name = "pageNum") Integer pageNum,
                                   @RequestParam(name = "pageSize") Integer pageSize)
     {
         PageInfo<Comment> pageInfo = commentService.getCommentById(gid,pageNum,pageSize);
         return Result.success(pageInfo);
     }
+
 }
