@@ -1,17 +1,16 @@
 package mall.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import mall.model.Goods;
 import mall.model.User;
 import mall.service.UserService;
 import mall.utils.JWTUtils;
 import mall.utils.Result;
 import mall.utils.ResultCodeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,5 +52,14 @@ public class UserController {
             userMap.put("token",token);
             return Result.success(userMap);
         }
+    }
+
+    @ApiOperation("根据用户id获取商品详情")
+    @ApiImplicitParam(name = "uaccount",value = "用户id",dataTypeClass = String.class,required = true,defaultValue = "1")
+    @GetMapping("/detail/{uaccount}")
+    public Result detail( @PathVariable(name = "uaccount")Integer uaccount)
+    {
+        User user = userService.getDetailByUid(uaccount);
+        return Result.success(user);
     }
 }

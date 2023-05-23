@@ -1,6 +1,7 @@
 package mall.service.impl;
 
 import mall.dao.UserDao;
+import mall.model.Goods;
 import mall.model.User;
 import mall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User loginService(String uname,String upassword) {
         return userDao.login(uname,upassword);
+    }
+
+    @Override
+    public User getDetailByUid(Integer uaccount){
+        User user = userDao.getDetailByUid(uaccount);
+        if(user==null)
+        {
+            return null;
+        }
+        return user;
     }
 }

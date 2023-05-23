@@ -11,4 +11,6 @@ public interface UserDao {
     User findByUname(String uname);
     //登录
     User login(String uname,String upassword);
+
+    User getDetailByUid(Integer uaccount);
 }

@@ -16,4 +16,8 @@ public class User {
     private String uname;
     @ApiModelProperty(value = "性别",required = false,example = "男")
     private String usex;
+    @ApiModelProperty(value = "地址",required = false,example = "福建省福州市")
+    private String uaddress;
+    @ApiModelProperty(value = "电话",required = false,example = "114514")
+    private String utel;
 }
