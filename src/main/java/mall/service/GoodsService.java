@@ -13,4 +13,6 @@ public interface GoodsService {
     PageInfo<Goods> getGoodsByTypes(Integer types, Integer pageNum, Integer pageSize);
 
     PageInfo<Goods> searchGoodsByName(String gname, Integer pageNum, Integer pageSize);
+
+    String getGoodpicById(Integer gid);
 }

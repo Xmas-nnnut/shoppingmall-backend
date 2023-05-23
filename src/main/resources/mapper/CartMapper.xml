@@ -4,7 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mall.dao.CartDao">
     <insert id="insertCart" parameterType="mall.model.Cart" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO cart (goodsname,number, price,goodid,uid)VALUES(#{goodsname}, #{number}, #{price},#{goodid},#{uid});
+        INSERT INTO cart (goodsname,number, price,goodid,uid)
+        VALUES(#{goodsname}, #{number}, #{price},#{goodid},#{uid});
     </insert>
     <select id="getCartByUGid" resultType="mall.model.Cart">
         SELECT * FROM cart WHERE goodid=#{gid} and uid=#{uid}

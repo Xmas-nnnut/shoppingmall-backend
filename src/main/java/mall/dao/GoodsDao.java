@@ -13,4 +13,6 @@ public interface GoodsDao {
     List<Goods> getGoodByTypes(Integer types);
 
     List<Goods> searchGoodsByName(String gname);
+
+    String getGoodpicById(Integer gid);
 }

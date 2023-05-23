@@ -21,13 +21,16 @@ public class Userorder {
     private Integer uid;
     @ApiModelProperty(value = "商品id",example = "1")
     private Integer gid;
+    @ApiModelProperty(value = "商品图片",example = "http://127.0.0.1:8080/img/1.jpg")
+    private String gpicture;
 
-    public Userorder(int number, int price, String goodsname, Integer uid, Integer gid) {
+    public Userorder(int number, int price, String goodsname, Integer uid, Integer gid, String gpicture) {
         this.number = number;
         this.price = price;
         this.goodsname = goodsname;
         this.uid = uid;
         this.gid = gid;
+        this.gpicture = gpicture;
     }
 
     public Userorder() {

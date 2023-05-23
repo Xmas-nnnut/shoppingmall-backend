@@ -10,6 +10,7 @@ import mall.model.Goods;
 import mall.model.Userorder;
 import mall.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,10 +23,14 @@ public class CartServiceImpl implements CartService {
     GoodsDao goodsDao;
     @Autowired(required = false)
     OrderDao orderDao;
+    @Value("${image.prefix-url}")
+    String imgUrl;
+
     @Override
     public Cart insertCart(Cart cart) {
         Cart cartJdbc = cartDao.getCartByUGid(cart.getUid(),cart.getGoodid());
         Goods goods = goodsDao.getGoodById(cart.getGoodid());
+
         if(cartJdbc!=null)
         {
             int number = cart.getNumber() + cartJdbc.getNumber();
@@ -41,6 +46,7 @@ public class CartServiceImpl implements CartService {
             cart.setPrice(price);
             cartDao.insertCart(cart);
         }
+
         return cart;
     }
 
@@ -49,6 +55,13 @@ public class CartServiceImpl implements CartService {
         //开启分页
         PageHelper.startPage(pageNum,pageSize);
         List<Cart> cartList = cartDao.getAllCart(uid);
+
+        //拼接图片url
+        for(Cart cart : cartList)
+        {
+            String picpath = goodsDao.getGoodpicById(cart.getGoodid());
+            cart.setGpicture(imgUrl + picpath);
+        }
         PageInfo<Cart> pageInfo = new PageInfo<>(cartList);
         return pageInfo;
     }
@@ -90,7 +103,7 @@ public class CartServiceImpl implements CartService {
         for(Cart cart : cartList)
         {
             Userorder userorder = new Userorder(cart.getNumber(),cart.getPrice(),
-                    cart.getGoodsname(),cart.getUid(),cart.getGoodid());
+                    cart.getGoodsname(),cart.getUid(),cart.getGoodid(),cart.getGpicture());
             // 向订单表插入订单信息
             orderDao.InsertOrder(userorder);
 

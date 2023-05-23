@@ -19,4 +19,6 @@ public class Cart {
     private Integer goodid;
     @ApiModelProperty(value = "用户id",required = true,example = "1")
     private Integer uid;
+    @ApiModelProperty(value = "商品图片",example = "http://127.0.0.1:8080/img/1.jpg")
+    private String gpicture;
 }

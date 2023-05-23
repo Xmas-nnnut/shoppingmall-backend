@@ -72,4 +72,15 @@ public class GoodsServiceImpl implements GoodsService {
         PageInfo<Goods> pageInfo = new PageInfo<>(goodsList);
         return  pageInfo;
     }
+
+    @Override
+    public String getGoodpicById(Integer gid) {
+        Goods goods = goodsDao.getGoodById(gid);
+        if(goods==null)
+        {
+            return null;
+        }
+        String picpath = goods.getGpicture();
+        return imgUrl + picpath;
+    }
 }

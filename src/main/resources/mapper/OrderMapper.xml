@@ -4,7 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mall.dao.OrderDao">
     <insert id="InsertOrder" parameterType="mall.model.Userorder" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO userorder (goodsname, number, price,time,uid,gid )VALUES(#{goodsname}, #{number}, #{price},now(),#{uid},#{gid})
+        INSERT INTO userorder (goodsname, number, price,time,uid,gid)
+        VALUES(#{goodsname}, #{number}, #{price},now(),#{uid},#{gid})
     </insert>
     <select id="getAllOrder" parameterType="int" resultType="mall.model.Userorder">
         SELECT * FROM userorder WHERE uid = #{id}
