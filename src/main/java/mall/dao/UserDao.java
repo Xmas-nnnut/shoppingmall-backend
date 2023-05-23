@@ -12,5 +12,8 @@ public interface UserDao {
     //登录
     User login(String uname,String upassword);
 
+    //获取用户信息
     User getDetailByUid(Integer uaccount);
+    //更改用户信息
+    int updateUserInfo(User user);
 }

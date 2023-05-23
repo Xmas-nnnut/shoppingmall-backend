@@ -2,8 +2,8 @@ package mall.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import mall.model.Goods;
 import mall.model.User;
 import mall.service.UserService;
 import mall.utils.JWTUtils;
@@ -54,12 +54,50 @@ public class UserController {
         }
     }
 
-    @ApiOperation("根据用户id获取商品详情")
-    @ApiImplicitParam(name = "uaccount",value = "用户id",dataTypeClass = String.class,required = true,defaultValue = "1")
+    @ApiOperation("根据用户id获取用户信息详情")
+    @ApiImplicitParam(name = "uaccount",value = "用户id",dataTypeClass = Integer.class,required = true,defaultValue = "1")
     @GetMapping("/detail/{uaccount}")
     public Result detail( @PathVariable(name = "uaccount")Integer uaccount)
     {
         User user = userService.getDetailByUid(uaccount);
         return Result.success(user);
+    }
+
+    @ApiOperation("根据用户id修改用户信息")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "uaccount",value = "用户id",dataTypeClass = Integer.class,defaultValue = "1"),
+            @ApiImplicitParam(name = "usex",value = "用户性别",dataTypeClass = String.class,defaultValue = "男"),
+            @ApiImplicitParam(name = "uaddress",value = "用户地址",dataTypeClass = String.class,defaultValue = "福建省"),
+            @ApiImplicitParam(name = "utel",value = "电话",dataTypeClass = String.class,defaultValue = "114514"),
+    })
+    @PutMapping("/updateUserInfo")
+    public Result updateUserInfo( @RequestParam(name = "uaccount") Integer uaccount,
+                                  @RequestParam(name = "usex") String usex,
+                                  @RequestParam(name = "uaddress") String uaddress,
+                                  @RequestParam(name = "utel") String utel)
+    {
+        User user = userService.getDetailByUid(uaccount);
+
+        if (user == null) {
+            // 如果该用户不存在，响应相应的结果
+            return Result.failure(ResultCodeEnum.FAIL,"该用户不存在！");
+        } else {
+            // 修改用户信息
+            user.setUsex(usex);
+            user.setUaddress(uaddress);
+            user.setUtel(utel);
+
+            // 更新用户信息
+            int rows = userService.updateUserInfo(user);
+
+            if (rows <= 0) {
+                // 如果更新操作未产生影响，则响应相应的结果
+                return Result.failure(ResultCodeEnum.FAIL,"更新用户信息失败！");
+            } else {
+                // 更新操作成功，响应成功结果
+                return Result.success(rows);
+            }
+        }
+
     }
 }

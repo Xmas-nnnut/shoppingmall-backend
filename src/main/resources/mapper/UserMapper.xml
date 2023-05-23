@@ -18,4 +18,12 @@
     <select id="getDetailByUid" parameterType="int" resultType="mall.model.User">
         select * from user where uaccount=#{uaccount}
     </select>
+
+    <update id="updateUserInfo" parameterType="mall.model.User">
+        update user
+        set usex = #{usex},
+            uaddress = #{uaddress},
+            utel= #{utel}
+        where uaccount = #{uaccount}
+    </update>
 </mapper>

@@ -10,4 +10,6 @@ public interface UserService {
     User loginService(String uname,String upassword);
 
     User getDetailByUid(Integer uaccount);
+
+    int updateUserInfo(User user);
 }
