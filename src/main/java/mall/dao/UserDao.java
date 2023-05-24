@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserDao {
     //注册
     int register(User user);
-    //根据用户名搜索
+    //根据用户名搜索，判断有没有重名
     User findByUname(String uname);
     //登录
     User login(String uname,String upassword);

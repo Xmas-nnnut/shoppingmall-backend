@@ -18,6 +18,6 @@ public interface CartDao {
     int deleteOne(Integer id);
     int deleteAll(Integer uid);
 
-
+    //增加销量
     int updateSales(Integer gid,Integer number);
 }

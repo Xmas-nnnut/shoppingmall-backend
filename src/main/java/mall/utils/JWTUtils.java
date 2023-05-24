@@ -20,10 +20,9 @@ public class JWTUtils {
 
     private static String SING;
 
-
     private static Integer expireTime;
 
-
+    //set方法
     public void setSING(String SING) {
         JWTUtils.SING = SING;
     }
@@ -32,6 +31,7 @@ public class JWTUtils {
         JWTUtils.expireTime = expireTime;
     }
 
+    //获取token
     public static String getToken(String userId, String userName) {
 
         Calendar instance = Calendar.getInstance();
@@ -41,7 +41,7 @@ public class JWTUtils {
         //创建jwt builder
         JWTCreator.Builder builder = JWT.create();
 
-        // payload
+        // payload 添加需要的东西
         Map<String, String> payload = new HashMap<>();
         payload.put("id",userId);
         payload.put("name",userName);

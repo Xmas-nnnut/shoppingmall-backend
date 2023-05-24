@@ -19,8 +19,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    //依赖注入
     @Autowired
     UserService userService;
+    //注册接口
     @ApiOperation("用户注册")
     @PostMapping(value = "/register")
     public Result<User> register(@RequestBody User user)
@@ -91,10 +93,10 @@ public class UserController {
             int rows = userService.updateUserInfo(user);
 
             if (rows <= 0) {
-                // 如果更新操作未产生影响，则响应相应的结果
+                // 更新操作未产生影响
                 return Result.failure(ResultCodeEnum.FAIL,"更新用户信息失败！");
             } else {
-                // 更新操作成功，响应成功结果
+                // 更新操作成功
                 return Result.success(rows);
             }
         }
