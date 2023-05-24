@@ -17,6 +17,7 @@ import java.util.Map;
 
 @Component
 public class JWTInterceptors implements HandlerInterceptor {
+    //ctrl + i
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Map<String,Object> map = new HashMap<>();
@@ -42,7 +43,7 @@ public class JWTInterceptors implements HandlerInterceptor {
 //            e.printStackTrace();
             message="token 为空或无效！";
         }
-        // 将HttpResult以json的形式响应到前台  HttpResult --> json  (jackson)
+        // 将HttpResult以json的形式响应到前台  HttpResult --> json  (jackson) data
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(Result.failure(ResultCodeEnum.UNAUTHORIZED,message));
         response.setContentType("application/json;charset=UTF-8");

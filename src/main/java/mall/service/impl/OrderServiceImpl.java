@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
         PageHelper.startPage(pageNum,pageSize);
         List<Userorder> userorderList = orderDao.getAllOrder(uid);
 
-        //拼接图片url
+        //拼接图片url***
         for(Userorder userorder : userorderList)
         {
             String picpath = goodsDao.getGoodpicById(userorder.getGid());

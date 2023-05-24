@@ -48,6 +48,7 @@ public class UserController {
         else
         {
             String token = JWTUtils.getToken(userformjdbc.getUaccount(),userformjdbc.getUname());
+            //构建返回体
             Map<String, String> userMap = new HashMap<String, String>();
             userMap.put("userId",userformjdbc.getUaccount());
             userMap.put("userName",userformjdbc.getUname());

@@ -56,7 +56,7 @@ public class CartServiceImpl implements CartService {
         PageHelper.startPage(pageNum,pageSize);
         List<Cart> cartList = cartDao.getAllCart(uid);
 
-        //拼接图片url
+        //拼接图片url***
         for(Cart cart : cartList)
         {
             String picpath = goodsDao.getGoodpicById(cart.getGoodid());
@@ -103,7 +103,8 @@ public class CartServiceImpl implements CartService {
         for(Cart cart : cartList)
         {
             Userorder userorder = new Userorder(cart.getNumber(),cart.getPrice(),
-                    cart.getGoodsname(),cart.getUid(),cart.getGoodid(),cart.getGpicture());
+                                                cart.getGoodsname(),cart.getUid(),
+                                                cart.getGoodid(),cart.getGpicture());
             // 向订单表插入订单信息
             orderDao.InsertOrder(userorder);
 

@@ -32,10 +32,6 @@ public class GoodsController {
         return Result.success(pageInfo);
     }
 
-
-
-
-
     @ApiOperation("根据商品id获取商品详情")
     @ApiImplicitParam(name = "gid",value = "商品id",dataTypeClass = String.class,required = true,defaultValue = "1")
     @GetMapping("/detail/{gid}")
@@ -63,9 +59,7 @@ public class GoodsController {
     @ApiOperation("商品首页搜索-根据名称模糊查找商品")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "gname",value = "商品名称",dataTypeClass = String.class,required = true,defaultValue = "水果"),
-
             @ApiImplicitParam(name = "pageNum",value = "当前页码",dataTypeClass = Integer.class,required = true,defaultValue = "1"),
-
             @ApiImplicitParam(name = "pageSize",value = "当前页数量",dataTypeClass = Integer.class,required = true,defaultValue = "4"),
     })
     @GetMapping("/search")

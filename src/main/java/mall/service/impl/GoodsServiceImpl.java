@@ -46,10 +46,10 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public PageInfo<Goods> getGoodsByTypes(Integer types, Integer pageNum, Integer pageSize) {
+    public PageInfo<Goods> searchGoodsByName(String gname, Integer pageNum, Integer pageSize) {
         //开启分页
         PageHelper.startPage(pageNum,pageSize);
-        List<Goods> goodsList = goodsDao.getGoodByTypes(types);
+        List<Goods> goodsList = goodsDao.searchGoodsByName(gname);
         for(Goods goods : goodsList)
         {
             String picpath = goods.getGpicture();
@@ -60,10 +60,10 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public PageInfo<Goods> searchGoodsByName(String gname, Integer pageNum, Integer pageSize) {
+    public PageInfo<Goods> getGoodsByTypes(Integer types, Integer pageNum, Integer pageSize) {
         //开启分页
         PageHelper.startPage(pageNum,pageSize);
-        List<Goods> goodsList = goodsDao.searchGoodsByName(gname);
+        List<Goods> goodsList = goodsDao.getGoodByTypes(types);
         for(Goods goods : goodsList)
         {
             String picpath = goods.getGpicture();
