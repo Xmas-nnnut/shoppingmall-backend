@@ -1,0 +1,29 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: mall
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mall?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:/mapper/*
+jwt:
+  SING: "ptu202012900" #密钥
+  expireTime: 30 #token有效时间 (分钟)
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
+
+file:
+  save-path: "./src/main/resources/static/img/"
+image:
+  prefix-url: "http://127.0.0.1:8080"
+
+swagger:
+  enabled: true

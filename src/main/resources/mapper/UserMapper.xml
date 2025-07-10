@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mall.dao.UserDao">
+    <insert id="register" parameterType="mall.model.User" useGeneratedKeys="true" keyProperty="uaccount">
+        INSERT INTO user(upassword,uname,usex,uaddress,utel) VALUES
+            (#{upassword},#{uname},#{usex},#{uaddress},#{utel})
+    </insert>
+    <select id="findByUname" parameterType="java.lang.String" resultType="mall.model.User">
+        SELECT * FROM user WHERE uname = #{uname}
+    </select>
+
+    <select id="login" resultType="mall.model.User" parameterType="java.lang.String">
+        select * from user where uname=#{uname} and upassword=#{upassword}
+    </select>
+
+    <select id="getDetailByUid" parameterType="int" resultType="mall.model.User">
+        select * from user where uaccount=#{uaccount}
+    </select>
+
+    <update id="updateUserInfo" parameterType="mall.model.User">
+        update user
+        set usex = #{usex},
+            uaddress = #{uaddress},
+            utel= #{utel}
+        where uaccount = #{uaccount}
+    </update>
+</mapper>

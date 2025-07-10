@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mall.dao.OrderDao">
+    <insert id="InsertOrder" parameterType="mall.model.Userorder" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO userorder (goodsname, number, price,time,uid,gid)
+        VALUES(#{goodsname}, #{number}, #{price},now(),#{uid},#{gid})
+    </insert>
+    <select id="getAllOrder" parameterType="int" resultType="mall.model.Userorder">
+        SELECT * FROM userorder WHERE uid = #{id}
+    </select>
+    <delete id="deleteOneOrder" parameterType="int">
+        DELETE FROM userorder WHERE id = #{id}
+    </delete>
+    <delete id="deleteAllOrder" parameterType="int">
+        DELETE FROM userorder WHERE uid = #{uid}
+    </delete>
+</mapper>
